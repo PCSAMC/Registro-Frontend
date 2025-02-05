@@ -4,17 +4,18 @@ import './registro.css';
 import { obtenerCarreras,obtenerColegios,obtenerSexos,obtenerTiposSangre } from '../Peticiones/peticiones';
 const Registro = () => {
     const [estudiante, setEstudiante] = useState({
-        nombre: '',
+        nombre_completo: '',
         direccion:'',
         fecha_nacimiento: '',
+        ci:'',
         gmail: '',
         telefono: '',
         estado_civil:'',
-        carrera_id: '',
-        colegio_id: '',
-        tipo_sangre_id: '',
-        sexo_id: '',
-        nacionalidad_id: '' // Nuevo campo para nacionalidad
+        carrera_id_carrera: '',
+        colegios_id_col: '',
+        id_tiposang: '',
+        id_sexo: '',
+        id_nacionalidad: '' // Nuevo campo para nacionalidad
       });
     
       const [carreras, setCarreras] = useState([]);
@@ -175,13 +176,13 @@ const Registro = () => {
                 <select
                   id="carrera_id"
                   name="carrera_id"
-                  value={estudiante.carrera_id}
+                  value={estudiante.carrera_id_carrera}
                   onChange={handleChange}
                   className="campoSeleccion1414"
                 >
                   <option value="">Seleccione una carrera</option>
                   {carreras.map(carrera => (
-                    <option key={carrera.id} value={carrera.id}>{carrera.nombre}</option>
+                    <option key={carrera.id_carrera} value={carrera.id_carrera}>{carrera.carrera}</option>
                   ))}
                 </select>
               </div>
@@ -192,14 +193,14 @@ const Registro = () => {
                 <select
         id="colegio_id"
         name="colegio_id"
-        value={estudiante.colegio_id}
+        value={estudiante.colegios_id_col}
         onChange={handleChange}
         className="campoSeleccion1414"
       >
         <option value="">Seleccione un colegio</option>
         {colegios.map(colegio => (
-          <option key={colegio.id} value={colegio.id}>
-            {colegio.nombre}
+          <option key={colegio.id_col} value={colegio.id_col}>
+            {colegio.colegio}
           </option>
         ))}
       </select>
@@ -218,13 +219,13 @@ const Registro = () => {
                 <select
         id="tipo_sangre_id"
         name="tipo_sangre_id"
-        value={estudiante.tipo_sangre_id}
+        value={estudiante.id_tiposang}
         onChange={handleChange}
         className="campoSeleccion1414"
       >
         <option value="">Seleccione un tipo de sangre</option>
         {tiposSangre.map(tipo => (
-          <option key={tipo.id} value={tipo.id}>
+          <option key={tipo.id_tiposang} value={tipo.id_tiposang}>
             {tipo.tipo}
           </option>
         ))}
@@ -239,14 +240,14 @@ const Registro = () => {
                 <select
         id="sexo_id"
         name="sexo_id"
-        value={estudiante.sexo_id}
+        value={estudiante.id_sexo}
         onChange={handleChange}
         className="campoSeleccion1414"
       >
         <option value="">Seleccione un sexo</option>
         {sexos.map(sexo => (
-          <option key={sexo.id} value={sexo.id}>
-            {sexo.tipo}
+          <option key={sexo.id_sexo} value={sexo.id_sexo}>
+            {sexo.sexo}
           </option>
         ))}
       </select>
@@ -277,14 +278,14 @@ const Registro = () => {
                 <select
         id="nacionalidad_id"
         name="nacionalidad_id"
-        value={formData.nacionalidad_id}
+        value={estudiante.id_nacionalidad}
         onChange={handleChange}
         className="campoSeleccion1414"
       >
         <option value="">Seleccione una nacionalidad</option>
         {nacionalidades.map(nacionalidad => (
-          <option key={nacionalidad.id} value={nacionalidad.id}>
-            {nacionalidad.nombre}
+          <option key={nacionalidad.id_nacionalidad} value={nacionalidad.id_nacionalidad}>
+            {nacionalidad.nacionalidad}
           </option>
         ))}
       </select>
