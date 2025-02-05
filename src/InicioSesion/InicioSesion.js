@@ -12,7 +12,7 @@ const InicioSesion = () => {
   
       try {
         const data = await iniciarSesion(usuario, password1);
-        if (data.salida) {
+        if (data.success) {
           navigate('/panatallaRegistrar');
         } else {
           alert(data.mensaje || 'Usuario o contraseña incorrectos');
