@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from 'react';
 import { FaUser, FaCalendar, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGraduationCap, FaSchool, FaTint, FaMale, FaFemale, FaHeart, FaGlobe } from 'react-icons/fa';
 import './registro.css';
-import { obtenerCarreras,obtenerColegios,obtenerSexos,obtenerTiposSangre } from '../Peticiones/peticiones';
+import { obtenerCarreras,obtenerColegios,obtenerSexos,obtenerTiposSangre,obtenerNacionalidades } from '../Peticiones/peticiones';
 const Registro = () => {
     const [estudiante, setEstudiante] = useState({
         nombre_completo: '',
