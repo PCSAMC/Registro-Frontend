@@ -44,7 +44,7 @@ export const obtenerCarreras = async () => {
   
   export const obtenerTiposSangre = async () => {
     try {
-      const response = await apiClient.get(`/obtenerTodosTiposSangre`);
+      const response = await apiClient.get(`/tipo_sangre/obtenerTodosTiposSangre`);
       return response.data;
     } catch (error) {
       console.error('Error al obtener tipos de sangre:', error);
@@ -55,7 +55,7 @@ export const obtenerCarreras = async () => {
   
   export const obtenerSexos = async () => {
     try {
-      const response = await apiClient.get(`/obtenerTodosSexos`);
+      const response = await apiClient.get(`/sexo/obtenerTodosSexos`);
       return response.data;
     } catch (error) {
       console.error('Error al obtener sexos:', error);
@@ -64,7 +64,7 @@ export const obtenerCarreras = async () => {
   };
   export const obtenerNacionalidades = async () => {
     try {
-      const response = await apiClient.get(`/obtenerTodasNacionalidades`);
+      const response = await apiClient.get(`/nacionalidad/obtenerTodasNacionalidades`);
       return response.data; 
     } catch (error) {
       console.error('Error al obtener nacionalidades:', error);
