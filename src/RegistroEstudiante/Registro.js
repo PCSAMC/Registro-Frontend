@@ -1,21 +1,21 @@
 import React, { useState , useEffect} from 'react';
 import { FaUser, FaCalendar, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGraduationCap, FaSchool, FaTint, FaMale, FaFemale, FaHeart, FaGlobe } from 'react-icons/fa';
 import './registro.css';
-import { obtenerCarreras,obtenerColegios,obtenerSexos,obtenerTiposSangre,obtenerNacionalidades } from '../Peticiones/peticiones';
+import { obtenerCarreras,obtenerColegios,obtenerSexos,obtenerTiposSangre,obtenerNacionalidades,crearEstudiante } from '../Peticiones/peticiones';
 const Registro = () => {
     const [estudiante, setEstudiante] = useState({
         nombre_completo: '',
         direccion:'',
         fecha_nacimiento: '',
-        ci:'',
+        ci:0,
         gmail: '',
-        telefono: '',
+        telefono: 0,
         estado_civil:'',
-        carrera_id_carrera: '',
-        colegios_id_col: '',
-        id_tiposang: '',
-        id_sexo: '',
-        id_nacionalidad: '' // Nuevo campo para nacionalidad
+        carrera_id_carrera: 0,
+        colegios_id_col: 0,
+        id_tiposang: 0,
+        id_sexo: 0,
+        id_nacionalidad: 0 // Nuevo campo para nacionalidad
       });
     
       const [carreras, setCarreras] = useState([]);
@@ -23,7 +23,35 @@ const Registro = () => {
       const [tiposSangre, setTiposSangre] = useState([]);
       const [sexos, setSexos] = useState([]);
       const [nacionalidades, setNacionalidades] = useState([]);  // Estado para nacionalidades
-    
+      const handleAgregarEstudiante = async () => {
+        try {
+          const resultado = await crearEstudiante(estudiante);
+          if (resultado) {
+            console.log('Estudiante agregado correctamente:', resultado);
+      
+            // Limpiar los campos después de agregar el estudiante
+            setEstudiante({
+              nombre_completo: '',
+              direccion: '',
+              fecha_nacimiento: '',
+              ci: 0,
+              gmail: '',
+              telefono: 0,
+              estado_civil: '',
+              carrera_id_carrera: 0,
+              colegios_id_col: 0,
+              id_tiposang: 0,
+              id_sexo: 0,
+              id_nacionalidad: 0
+            });
+      
+          } else {
+            console.log('Error al agregar estudiante:', resultado?.mensaje || 'Error desconocido');
+          }
+        } catch (error) {
+          console.error('Error al agregar estudiante:', error);
+        }
+      };
       // Función para obtener carreras
       const fetchCarreras = async () => {
         try {
@@ -96,10 +124,7 @@ const Registro = () => {
         { id: 4, nombre: 'Viudo' },
       ];
     
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Datos del formulario:', estudiante);
-  };
+
 
   return (
     <div className="registro123">
@@ -170,7 +195,7 @@ const Registro = () => {
                 />
               </div>
               <div className="grupoFormulario1111">
-                <label htmlFor="telefono">
+                <label htmlFor="Carnet de identidad ">
                   <FaPhone className="iconoFormulario909" /> Teléfono
                 </label>
                 <input
@@ -321,7 +346,7 @@ const Registro = () => {
               </div>
 
             <div className="contenedorBotones1515">
-              <button type="submit" className="botonRegistro1616">
+              <button type="submit" className="botonRegistro1616" onClick={handleAgregarEstudiante}>
                 Registrar Estudiante
               </button>
             </div>

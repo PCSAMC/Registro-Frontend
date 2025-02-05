@@ -71,3 +71,13 @@ export const obtenerCarreras = async () => {
       throw error; 
     }
   };
+  export const crearEstudiante = async (estudiante) => {
+    try {
+      const response = await axios.post(estudiante);
+      
+      return response.data; 
+    } catch (error) {
+      console.error('Error al crear el estudiante:', error);
+      return { success: false, mensaje: 'Error al enviar la solicitud' };
+    }
+  };
