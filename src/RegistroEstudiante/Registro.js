@@ -170,6 +170,20 @@ const Registro = () => {
                 />
               </div>
               <div className="grupoFormulario1111">
+                <label htmlFor="telefono">
+                  <FaPhone className="iconoFormulario909" /> Teléfono
+                </label>
+                <input
+                  type="number"
+                  id="ci"
+                  name="carnet"
+                  value={estudiante.ci}
+                  onChange={handleChange}
+                  placeholder="13056824"
+                  className="campoEntrada1212"
+                />
+              </div>
+              <div className="grupoFormulario1111">
                 <label htmlFor="carrera_id">
                   <FaGraduationCap className="iconoFormulario909" /> Carrera
                 </label>
@@ -266,7 +280,7 @@ const Registro = () => {
                 >
                   <option value="">Seleccione estado civil</option>
                   {estadosCiviles.map(estado => (
-                    <option key={estado.id} value={estado.tipo}>{estado.tipo}</option>
+                    <option key={estado.id} value={estado.nombre}>{estado.nombre}</option>
                   ))}
                 </select>
               </div>
