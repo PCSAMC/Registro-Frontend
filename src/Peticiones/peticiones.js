@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'http:localhost:4000', 
+  baseURL: 'http://localhost:4000', 
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
@@ -10,7 +10,7 @@ const apiClient = axios.create({
 
 export const iniciarSesion = async (usuario, password1) => {
   try {
-    const response = await apiClient.post('/usuario/iniciarSesion', {
+    const response = await apiClient.post('/usuario/login', {
       usuario,
       password1,
     });
