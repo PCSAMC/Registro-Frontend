@@ -1,0 +1,148 @@
+
+.Inicio {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #f4f6fb;
+}
+
+
+.imagenDerecha {
+    display: none;
+    width: 50%;
+    background: linear-gradient(135deg, #002147, #004aad);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BienvenidaImagen {
+    width: 80%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.InicioSesion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.cartaInicio {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+
+.avatarPrincipal {
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.avatar {
+    width: 5rem;
+    height: 5rem;
+    background: #ffcc00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-icono {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: #002147;
+}
+
+h1 {
+    text-align: center;
+    margin: 1.5rem 0 2rem;
+    color: #002147;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.grupoForm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem !important;
+    margin-top: 6%;
+    margin-bottom: 4%;
+}
+
+label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: #4b5563;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+input {
+    width: 100%;
+    padding: 1rem 0.75rem;
+    border: 2px solid #d1d5db;
+    border-radius: 0.5rem;
+    background-color: #f9fafb;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+input:not(:placeholder-shown) {
+    border-color: #ffcc00;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    top: -7px;
+    font-size: 0.75rem;
+    color: #002147;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #004aad, #002147);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #ffcc00;
+    color: #002147;
+}
+
+
+@media (min-width: 768px) {
+    .imagenDerecha {
+        display: flex;
+    }
+
+    .InicioSesion {
+        width: 50%;
+    }
+}
