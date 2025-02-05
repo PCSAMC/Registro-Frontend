@@ -33,7 +33,7 @@ export const obtenerCarreras = async () => {
   
   export const obtenerColegios = async () => {
     try {
-      const response = await apiClient.get(`/obtenerColegio`);
+      const response = await apiClient.get(`/colegio/obtenerColegio`);
       return response.data;
     } catch (error) {
       console.error('Error al obtener colegios:', error);
