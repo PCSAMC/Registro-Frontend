@@ -1,0 +1,161 @@
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9; 
+    margin: 0;
+    padding: 0;
+}
+
+
+.contenedor-tabla {
+    margin: 50px auto;
+    max-width: 85%;
+    overflow-x: auto;
+}
+
+
+.tabla-personalizada {
+    width: 100%;
+    border-collapse: collapse; 
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+
+.cabecera-tabla {
+    background-color: #003366; 
+    color: white;
+    padding: 12px 15px;
+    font-size: 16px; 
+    text-align: left;
+    letter-spacing: 1px; 
+    font-weight: 500; 
+    text-transform: uppercase;
+}
+
+
+.cuerpo-tabla {
+    background-color: #fff;
+}
+
+
+.fila-tabla {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.celda-tabla {
+    padding: 10px 15px; 
+    border: 1px solid #e0e0e0; 
+    text-align: left;
+    font-size: 15px; 
+    color: #333;
+    font-weight: 400;
+}
+
+
+.foto-usuario {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+
+.fila-tabla:hover {
+    background-color: #f7c800; 
+    transform: translateY(-2px);
+    color: white;
+}
+
+
+.info-estudiante {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+
+.numero-fila {
+    font-size: 15px;
+    font-weight: 500;
+    color: #003366; 
+    text-align: center;
+}
+
+
+.tabla-personalizada tr {
+    border-bottom: 1px solid #e1e1e1; /* Líneas de separación más suaves */
+}
+
+
+.celda-tabla {
+    border-right: 1px solid #e1e1e1;
+}
+
+
+.tabla-personalizada tr td:last-child {
+    border-right: none;
+}
+
+/* Centrado de la primera columna */
+.tabla-personalizada tr td:first-child {
+    text-align: center;
+}
+
+
+.cabecera-tabla th {
+    background-color: #003366; 
+    color: white;
+    padding: 12px 15px;
+    font-size: 16px;
+    text-align: left;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.acciones {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+/* Estilo de los botones */
+.boton-accion {
+    background-color: #003366; /* Azul oscuro */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+    transition: background-color 0.3s;
+}
+
+
+.boton-accion:hover {
+    background-color: #1a24de; /* Amarillo brillante */
+    color: #fff;
+}
+
+
+.boton-accion i {
+    font-size: 16px;
+}
+
+
+.eliminar {
+    background-color: #e74c3c; 
+}
+
+.eliminar:hover {
+    background-color: #d6230f;
+    color: white;
+}

@@ -1,11 +1,9 @@
-
 .Inicio {
     display: flex;
     min-height: 100vh;
     width: 100%;
     background-color: #f4f6fb;
 }
-
 
 .imagenDerecha {
     display: none;
@@ -42,7 +40,6 @@
     position: relative;
 }
 
-
 .avatarPrincipal {
     position: absolute;
     top: -2.5rem;
@@ -67,7 +64,7 @@
     fill: #002147;
 }
 
-h1 {
+.tituloFormulario {
     text-align: center;
     margin: 1.5rem 0 2rem;
     color: #002147;
@@ -84,7 +81,7 @@ h1 {
     margin-bottom: 4%;
 }
 
-label {
+.etiquetaForm {
     position: absolute;
     top: 50%;
     left: 12px;
@@ -96,7 +93,7 @@ label {
     pointer-events: none;
 }
 
-input {
+.campoEntrada {
     width: 100%;
     padding: 1rem 0.75rem;
     border: 2px solid #d1d5db;
@@ -106,20 +103,20 @@ input {
     transition: all 0.3s ease;
 }
 
-input:focus,
-input:not(:placeholder-shown) {
+.campoEntrada:focus,
+.campoEntrada:not(:placeholder-shown) {
     border-color: #ffcc00;
     box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
 }
 
-input:focus + label,
-input:not(:placeholder-shown) + label {
+.campoEntrada:focus + .etiquetaForm,
+.campoEntrada:not(:placeholder-shown) + .etiquetaForm {
     top: -7px;
     font-size: 0.75rem;
     color: #002147;
 }
 
-button {
+.botonFormulario {
     width: 100%;
     padding: 0.75rem;
     background: linear-gradient(135deg, #004aad, #002147);
@@ -131,11 +128,10 @@ button {
     transition: all 0.3s;
 }
 
-button:hover {
+.botonFormulario:hover {
     background: #ffcc00;
     color: #002147;
 }
-
 
 @media (min-width: 768px) {
     .imagenDerecha {

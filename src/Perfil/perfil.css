@@ -1,0 +1,230 @@
+.contenedor-perfil {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .tarjeta {
+    background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .tarjeta-encabezado {
+    position: relative;
+    padding: 1.5rem 2rem 6rem 2rem;
+  }
+  
+  .contenido-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a365d;
+  }
+  
+  .contenedor-avatar {
+    position: absolute;
+    bottom: -2rem;
+    left: 2rem;
+  }
+  
+  .avatar {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background: #003366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .icono-avatar {
+    font-size: 3rem;
+    color: white;
+  }
+  
+  .tarjeta-contenido {
+    margin-top: 3rem;
+    padding: 2rem;
+  }
+  
+  .cuadricula-perfil {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .cuadricula-perfil {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .seccion-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .titulo-seccion {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  
+  .grupo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .item-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+
+    transition: background-color 0.7s ease, border 0.9s ease; 
+  }
+  
+  .item-info:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 2.2px solid #233bb3 !important;
+  }
+  
+  .icono {
+    font-size: 1.5rem;
+    color: #4a5568;
+  }
+  
+  .contenido-info {
+    flex: 1;
+  }
+  
+  .etiqueta-info {
+    font-size: 0.875rem;
+    color: #718096;
+  }
+  
+  .valor-info {
+    font-weight: 500;
+    color: #2d3748;
+  }
+  
+  .boton-actualizar, .boton-editar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-weight: 500;
+  }
+  
+  .boton-actualizar {
+    background-color: white;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .boton-editar {
+    width: 100%;
+    margin-top: 2rem;
+    background: yellow;
+    color: #003366;
+    justify-content: center;
+    padding: 0.75rem;
+  }
+  
+  .boton-actualizar:hover, .boton-editar:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Animaciones */
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes rebotar {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes pulsar {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes flotar {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  @keyframes agitar {
+    0%, 100% {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    75% {
+      transform: rotate(10deg);
+    }
+  }
+  
+  .icono-girar {
+    animation: girar 2s linear infinite;
+  }
+  
+  .rebotar {
+    animation: rebotar 2s ease-in-out infinite;
+  }
+  
+  .pulsar {
+    animation: pulsar 2s ease-in-out infinite;
+  }
+  
+  .flotar {
+    animation: flotar 3s ease-in-out infinite;
+  }
+  
+  .icono-agitar {
+    animation: agitar 0.5s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+  
+  .boton-editar:hover .icono-agitar {
+    animation-play-state: running;
+  }

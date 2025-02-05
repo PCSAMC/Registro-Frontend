@@ -1,0 +1,193 @@
+
+.registro123 {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.contenedorPrincipal505 {
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.contenedorPrincipal505:hover {
+    transform: scale(1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 1);
+}
+
+.tituloSeccion707 {
+    color: #003366; 
+    text-align: center;
+    font-size: 2.4em; 
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.tituloSeccion707::after {
+    content: ''; 
+    display: block;
+    width: 50%;
+    height: 3px; 
+    background-color: #f4f415ec; 
+    margin: 20px auto; 
+    border-radius: 10px; 
+}
+
+
+.contenedorPrincipal505 {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 950px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+
+
+.campoEntrada1212,
+.campoSeleccion1414 {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2.2px solid #233bb3;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1.1em;
+    transition: all 0.4s ease;
+    background-color: #f9f9f9; 
+    color: #555;
+}
+
+.campoEntrada1212:focus,
+.campoSeleccion1414:focus {
+    border-color: #f4f415ec; 
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.4); 
+    background-color: #ffffff;
+}
+
+
+.campoEntrada1212,
+.campoSeleccion1414 {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.botonRegistro1616 {
+    background-color: #1547df;
+    color: #fff;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.botonRegistro1616:hover {
+    background-color: #f4f415ec; 
+    transform: scale(1.05);
+}
+
+
+.cuadriculaFormulario1010 {
+    display: grid;
+    grid-template-columns: 1fr 1fr ; 
+    gap: 20px;
+}
+
+.cuadriculaFormulario1010 .grupoFormularioCompleto1313 {
+    grid-column: span 3; 
+}
+
+@media (max-width: 768px) {
+    .cuadriculaFormulario1010 {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.contenedorBotones1515 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.campoEntrada1212,
+.botonRegistro1616 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.campoEntrada1212:hover,
+.botonRegistro1616:hover {
+    transition: all 0.3s ease;
+}
+
+
+.contenedorPrincipal505 {
+    background-color: #eaf4f4; 
+}
+
+.campoSeleccion1414 {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2.2px solid #233bb3;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1.1em;
+    background-color: #f9f9f9;
+    color: #555;
+    transition: all 0.4s ease;
+    appearance: none; 
+    position: relative;
+}
+
+
+.campoSeleccion1414:focus {
+    border-color: #bbff00;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
+    background-color: #ffffff;
+}
+
+
+.campoSeleccion1414 option {
+    transition: transform 0.3s ease;
+}
+
+
+.campoSeleccion1414:hover {
+    transform: scale(1.05); 
+}
+
+
+.campoSeleccion1414:focus {
+    transform: scale(1.05); 
+}
