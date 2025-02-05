@@ -20,3 +20,54 @@ export const iniciarSesion = async (usuario, password1) => {
   }
 };
 
+export const obtenerCarreras = async () => {
+    try {
+      const response = await apiClient.get(`/carrera/obtenerCarrera`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener carreras:', error);
+      throw error;
+    }
+  };
+  
+  
+  export const obtenerColegios = async () => {
+    try {
+      const response = await apiClient.get(`/obtenerColegio`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener colegios:', error);
+      throw error;
+    }
+  };
+  
+  
+  export const obtenerTiposSangre = async () => {
+    try {
+      const response = await apiClient.get(`/obtenerTodosTiposSangre`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener tipos de sangre:', error);
+      throw error;
+    }
+  };
+  
+  
+  export const obtenerSexos = async () => {
+    try {
+      const response = await apiClient.get(`/obtenerTodosSexos`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener sexos:', error);
+      throw error;
+    }
+  };
+  export const obtenerNacionalidades = async () => {
+    try {
+      const response = await apiClient.get(`/obtenerTodasNacionalidades`);
+      return response.data; 
+    } catch (error) {
+      console.error('Error al obtener nacionalidades:', error);
+      throw error; 
+    }
+  };

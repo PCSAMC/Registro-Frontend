@@ -1,76 +1,103 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { FaUser, FaCalendar, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGraduationCap, FaSchool, FaTint, FaMale, FaFemale, FaHeart, FaGlobe } from 'react-icons/fa';
 import './registro.css';
+import { obtenerCarreras,obtenerColegios,obtenerSexos,obtenerTiposSangre } from '../Peticiones/peticiones';
 const Registro = () => {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    fecha_nacimiento: '',
-    gmail: '',
-    telefono: '',
-    estado_civil: '',
-    direccion: '',
-    carrera_id: '',
-    colegio_id: '',
-    tipo_sangre: '',
-    sexo: '',
-    nacionalidad: ''
-  });
-
-  
-
-  const carreras = [
-    { id: 1, nombre: 'Ingeniería de Software' },
-    { id: 2, nombre: 'Medicina' },
-    { id: 3, nombre: 'Arquitectura' }
-  ];
-
-  const colegios = [
-    { id: 1, nombre: 'Colegio San Agustín' },
-    { id: 2, nombre: 'Colegio Santa María' },
-    { id: 3, nombre: 'Colegio San José' }
-  ];
-
-  const tiposSangre = [
-    { id: 1, tipo: 'A+' },
-    { id: 2, tipo: 'A-' },
-    { id: 3, tipo: 'B+' },
-    { id: 4, tipo: 'B-' },
-    { id: 5, tipo: 'O+' },
-    { id: 6, tipo: 'O-' },
-    { id: 7, tipo: 'AB+' },
-    { id: 8, tipo: 'AB-' }
-  ];
-
-  const sexos = [
-    { id: 1, tipo: 'Masculino' },
-    { id: 2, tipo: 'Femenino' }
-  ];
-
-  const estadosCiviles = [
-    { id: 1, tipo: 'Soltero/a' },
-    { id: 2, tipo: 'Casado/a' },
-    { id: 3, tipo: 'Divorciado/a' },
-    { id: 4, tipo: 'Viudo/a' }
-  ];
-
-  const nacionalidades = [
-    { id: 1, nombre: 'Peruana' },
-    { id: 2, nombre: 'Colombiana' },
-    { id: 3, nombre: 'Chilena' },
-    { id: 4, nombre: 'Argentina' }
-  ];
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
+    const [estudiante, setEstudiante] = useState({
+        nombre: '',
+        direccion:'',
+        fecha_nacimiento: '',
+        gmail: '',
+        telefono: '',
+        estado_civil:'',
+        carrera_id: '',
+        colegio_id: '',
+        tipo_sangre_id: '',
+        sexo_id: '',
+        nacionalidad_id: '' // Nuevo campo para nacionalidad
+      });
+    
+      const [carreras, setCarreras] = useState([]);
+      const [colegios, setColegios] = useState([]);
+      const [tiposSangre, setTiposSangre] = useState([]);
+      const [sexos, setSexos] = useState([]);
+      const [nacionalidades, setNacionalidades] = useState([]);  // Estado para nacionalidades
+    
+      // Función para obtener carreras
+      const fetchCarreras = async () => {
+        try {
+          const carrerasData = await obtenerCarreras();
+          setCarreras(carrerasData);
+        } catch (error) {
+          console.error('Error al obtener carreras:', error);
+        }
+      };
+    
+      // Función para obtener colegios
+      const fetchColegios = async () => {
+        try {
+          const colegiosData = await obtenerColegios();
+          setColegios(colegiosData);
+        } catch (error) {
+          console.error('Error al obtener colegios:', error);
+        }
+      };
+    
+      // Función para obtener tipos de sangre
+      const fetchTiposSangre = async () => {
+        try {
+          const tiposSangreData = await obtenerTiposSangre();
+          setTiposSangre(tiposSangreData);
+        } catch (error) {
+          console.error('Error al obtener tipos de sangre:', error);
+        }
+      };
+    
+      // Función para obtener sexos
+      const fetchSexos = async () => {
+        try {
+          const sexosData = await obtenerSexos();
+          setSexos(sexosData);
+        } catch (error) {
+          console.error('Error al obtener sexos:', error);
+        }
+      };
+    
+      // Función para obtener nacionalidades
+      const fetchNacionalidades = async () => {
+        try {
+          const nacionalidadesData = await obtenerNacionalidades();
+          setNacionalidades(nacionalidadesData);
+        } catch (error) {
+          console.error('Error al obtener nacionalidades:', error);
+        }
+      };
+    
+      useEffect(() => {
+        fetchCarreras();
+        fetchColegios();
+        fetchTiposSangre();
+        fetchSexos();
+        fetchNacionalidades();
+      }, []);
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setEstudiante(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+      };
+      const estadosCiviles = [
+        { id: 1, nombre: 'Soltero' },
+        { id: 2, nombre: 'Casado' },
+        { id: 3, nombre: 'Divorciado' },
+        { id: 4, nombre: 'Viudo' },
+      ];
+    
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Datos del formulario:', formData);
+    console.log('Datos del formulario:', estudiante);
   };
 
   return (
@@ -91,7 +118,7 @@ const Registro = () => {
                   type="text"
                   id="nombre"
                   name="nombre"
-                  value={formData.nombre}
+                  value={estudiante.nombre}
                   onChange={handleChange}
                   placeholder="Ingrese su nombre completo"
                   className="campoEntrada1212"
@@ -106,7 +133,7 @@ const Registro = () => {
                   type="date"
                   id="fecha_nacimiento"
                   name="fecha_nacimiento"
-                  value={formData.fecha_nacimiento}
+                  value={estudiante.fecha_nacimiento}
                   onChange={handleChange}
                   className="campoEntrada1212"
                 />
@@ -120,7 +147,7 @@ const Registro = () => {
                   type="email"
                   id="gmail"
                   name="gmail"
-                  value={formData.gmail}
+                  value={estudiante.gmail}
                   onChange={handleChange}
                   placeholder="ejemplo@email.com"
                   className="campoEntrada1212"
@@ -135,7 +162,7 @@ const Registro = () => {
                   type="tel"
                   id="telefono"
                   name="telefono"
-                  value={formData.telefono}
+                  value={estudiante.telefono}
                   onChange={handleChange}
                   placeholder="(+51) 999-999-999"
                   className="campoEntrada1212"
@@ -148,7 +175,7 @@ const Registro = () => {
                 <select
                   id="carrera_id"
                   name="carrera_id"
-                  value={formData.carrera_id}
+                  value={estudiante.carrera_id}
                   onChange={handleChange}
                   className="campoSeleccion1414"
                 >
@@ -163,17 +190,19 @@ const Registro = () => {
                   <FaSchool className="iconoFormulario909" /> Colegio de Procedencia
                 </label>
                 <select
-                  id="colegio_id"
-                  name="colegio_id"
-                  value={formData.colegio_id}
-                  onChange={handleChange}
-                  className="campoSeleccion1414"
-                >
-                  <option value="">Seleccione un colegio</option>
-                  {colegios.map(colegio => (
-                    <option key={colegio.id} value={colegio.id}>{colegio.nombre}</option>
-                  ))}
-                </select>
+        id="colegio_id"
+        name="colegio_id"
+        value={estudiante.colegio_id}
+        onChange={handleChange}
+        className="campoSeleccion1414"
+      >
+        <option value="">Seleccione un colegio</option>
+        {colegios.map(colegio => (
+          <option key={colegio.id} value={colegio.id}>
+            {colegio.nombre}
+          </option>
+        ))}
+      </select>
               </div>
             
               
@@ -187,17 +216,19 @@ const Registro = () => {
                   <FaTint className="iconoFormulario909" /> Tipo de Sangre
                 </label>
                 <select
-                  id="tipo_sangre"
-                  name="tipo_sangre"
-                  value={formData.tipo_sangre}
-                  onChange={handleChange}
-                  className="campoSeleccion1414"
-                >
-                  <option value="">Seleccione tipo de sangre</option>
-                  {tiposSangre.map(tipo => (
-                    <option key={tipo.id} value={tipo.tipo}>{tipo.tipo}</option>
-                  ))}
-                </select>
+        id="tipo_sangre_id"
+        name="tipo_sangre_id"
+        value={estudiante.tipo_sangre_id}
+        onChange={handleChange}
+        className="campoSeleccion1414"
+      >
+        <option value="">Seleccione un tipo de sangre</option>
+        {tiposSangre.map(tipo => (
+          <option key={tipo.id} value={tipo.id}>
+            {tipo.tipo}
+          </option>
+        ))}
+      </select>
               </div>
 
               <div className="grupoFormulario1111">
@@ -206,17 +237,19 @@ const Registro = () => {
                   <FaFemale className="iconoFormulario909" /> Sexo
                 </label>
                 <select
-                  id="sexo"
-                  name="sexo"
-                  value={formData.sexo}
-                  onChange={handleChange}
-                  className="campoSeleccion1414"
-                >
-                  <option value="">Seleccione sexo</option>
-                  {sexos.map(sexo => (
-                    <option key={sexo.id} value={sexo.id}>{sexo.tipo}</option>
-                  ))}
-                </select>
+        id="sexo_id"
+        name="sexo_id"
+        value={estudiante.sexo_id}
+        onChange={handleChange}
+        className="campoSeleccion1414"
+      >
+        <option value="">Seleccione un sexo</option>
+        {sexos.map(sexo => (
+          <option key={sexo.id} value={sexo.id}>
+            {sexo.tipo}
+          </option>
+        ))}
+      </select>
               </div>
 
               <div className="grupoFormulario1111">
@@ -226,7 +259,7 @@ const Registro = () => {
                 <select
                   id="estado_civil"
                   name="estado_civil"
-                  value={formData.estado_civil}
+                  value={estudiante.estado_civil}
                   onChange={handleChange}
                   className="campoSeleccion1414"
                 >
@@ -242,19 +275,19 @@ const Registro = () => {
                   <FaGlobe className="iconoFormulario909" /> Nacionalidad
                 </label>
                 <select
-                  id="nacionalidad"
-                  name="nacionalidad"
-                  value={formData.nacionalidad}
-                  onChange={handleChange}
-                  className="campoSeleccion1414"
-                >
-                  <option value="">Seleccione nacionalidad</option>
-                  {nacionalidades.map(nacionalidad => (
-                    <option key={nacionalidad.id} value={nacionalidad.id}>
-                      {nacionalidad.nombre}
-                    </option>
-                  ))}
-                </select>
+        id="nacionalidad_id"
+        name="nacionalidad_id"
+        value={formData.nacionalidad_id}
+        onChange={handleChange}
+        className="campoSeleccion1414"
+      >
+        <option value="">Seleccione una nacionalidad</option>
+        {nacionalidades.map(nacionalidad => (
+          <option key={nacionalidad.id} value={nacionalidad.id}>
+            {nacionalidad.nombre}
+          </option>
+        ))}
+      </select>
               </div>
             </div>
             <div className="grupoFormularioCompleto1313">
@@ -265,7 +298,7 @@ const Registro = () => {
                   type="text"
                   id="direccion"
                   name="direccion"
-                  value={formData.direccion}
+                  value={estudiante.direccion}
                   onChange={handleChange}
                   placeholder="Ingrese su dirección completa"
                   className="campoEntrada1212"
