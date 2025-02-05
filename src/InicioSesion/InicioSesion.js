@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './InicioSesion.css';
-
+import { iniciarSesion } from '../Peticiones/peticiones';
 const InicioSesion = () => {
-  const navigate = useNavigate();
-  const [correo, setCorreo] = useState('');
-  const [contrasena, setContrasena] = useState('');
-
-
-  const cuenta = {
-    correo: 'sergio@gmail.com',
-    contrasena: '123456'
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (correo === cuenta.correo && contrasena === cuenta.contrasena) {
-      navigate('/pantallaRegistrar'); 
-    } else {
-      alert('Credenciales incorrectas. Inténtalo de nuevo.');
-    }
-  };
-
+    const [usuario, setUsuario] = useState('');
+    const [password1, setPassword1] = useState('');
+    const navigate = useNavigate();
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      try {
+        const data = await iniciarSesion(usuario, password1);
+        if (data.salida) {
+          navigate('/panatallaRegistrar');
+        } else {
+          alert(data.mensaje || 'Usuario o contraseña incorrectos');
+        }
+      } catch (error) {
+        alert(error || 'Error al iniciar sesión');
+      }
+    };
   return (
     <div className="Inicio">
       {/* Sección de Imagen */}
@@ -54,8 +52,8 @@ const InicioSesion = () => {
                 id="correo" 
                 className='campoEntrada'
                 placeholder="" 
-                value={correo} 
-                onChange={(e) => setCorreo(e.target.value)} 
+                value={usuario} 
+                onChange={(e) => setUsuario(e.target.value)} 
                 required 
               />
               <label htmlFor="correo" className='etiquetaForm'>Correo Electrónico</label>
@@ -67,8 +65,8 @@ const InicioSesion = () => {
                 className='campoEntrada'
                 id="contrasena" 
                 placeholder="" 
-                value={contrasena} 
-                onChange={(e) => setContrasena(e.target.value)} 
+                value={password1} 
+                onChange={(e) => setPassword1(e.target.value)} 
                 required 
               />
               <label htmlFor="contrasena" className='etiquetaForm'>Contraseña</label>
